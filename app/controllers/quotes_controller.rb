@@ -7,4 +7,17 @@ class QuotesController < ApplicationController
 		@quote = Quote.new
 	end
 
+	def create
+		@Quote = Quote.create(quote_params)
+		if @Quote.invalid?
+			flash[:error] = '<strong>Could not save</strong> the data you entered is invalid'
+		end
+		redirect_to root_path
+	end
+
+	private
+
+	def quote_params
+		params.require(:quote).permit(:saying, :author)
+	end
 end
