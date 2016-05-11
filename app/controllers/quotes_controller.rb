@@ -3,10 +3,6 @@ class QuotesController < ApplicationController
 		@quote = Quote.order("RANDOM()").first
 	end
 
-	def new
-		@quote = Quote.new
-	end
-
 	def create
 		@Quote = Quote.create(quote_params)
 		if @Quote.invalid?
@@ -17,7 +13,7 @@ class QuotesController < ApplicationController
 
 	def about
 	end
-	
+
 	private
 
 	def quote_params
